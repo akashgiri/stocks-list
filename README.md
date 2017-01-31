@@ -10,14 +10,14 @@ REQUIREMENTS
 This scipt requires the following:
 
  * python 
- * python requests, json, re, BeutifulSoup modules
+ * python requests, json, re, BeautifulSoup modules
 
 
 INPUT PARAMETERS
 ----------------
 The input is a list of URL's specified in the input.json file. These URL's are the links to the
 detailed portfolio listing in Morningstar. For example, the detailed portfolio URL for 
-Franklin India Prima Plus Fund is "http://www.morningstar.in/mutualfunds/f0gbr06si1/franklin-india-prima-plus-fund-growth/detailed-portfolio.aspx".
+Franklin India Prima Plus Fund is http://www.morningstar.in/mutualfunds/f0gbr06si1/franklin-india-prima-plus-fund-growth/detailed-portfolio.aspx.
 
 INSTALLATION
 ------------
@@ -49,17 +49,10 @@ OUTPUT
 The output is a json file named 'stocks-list.json', with key names as the fund name as present in url, 
 and value is list of stocks held by the fund as present in morningstar website.
 e.g.
-For fund "Franklin India Prima Plus Fund", URL as provided is "http://www.morningstar.in/mutualfunds/f0gbr06si1/franklin-india-prima-plus-fund-growth/detailed-portfolio.aspx".
+For fund "Franklin India Prima Plus Fund", URL should be provided as "http://www.morningstar.in/mutualfunds/f0gbr06si1/franklin-india-prima-plus-fund-growth/detailed-portfolio.aspx".
 
 In the output, key: franklin-india-prima-plus-fund-growth
        	       value: [LIST OF STOCKS]
-
-
-CONFIGURATION
--------------
-
-The script has no menu or modifiable settings. There is no configuration.
-All the desired inputs are provided through input.json file
 
 
 MAINTAINERS
