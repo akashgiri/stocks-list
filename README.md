@@ -23,16 +23,16 @@ INSTALLATION
 ------------
  LINUX
  * Install python
-   sudo apt-get install python
+     sudo apt-get install python
 
  * Install pip
-   sudo apt-get install python-pip
+     sudo apt-get install python-pip
 
  * Install requests module
-   sudo pip install requests
+     sudo pip install requests
 
  * Install BeautifulSoup module
-   sudo pip install beautifulsoup4
+     sudo pip install beautifulsoup4
 
 
 EXECUTION
@@ -52,7 +52,7 @@ e.g.
 For fund "Franklin India Prima Plus Fund", URL should be provided as "http://www.morningstar.in/mutualfunds/f0gbr06si1/franklin-india-prima-plus-fund-growth/detailed-portfolio.aspx".
 
 In the output, key: franklin-india-prima-plus-fund-growth
-       	       value: an object with following attributes
-	       	      stocks-data: [{'sector': STOCK_SECTOR, 'stock': STOCK_NAME}]
-		      miscellaneous: {'cash_allocation': CASH_ALLOCATION, 'stock_allocation': STOCK_ALLOCATION, 
-		      		      'number_of_stocks': NUMBER_OF_STOCKS_HELD}
+       	       value: an object with following attributes  
+	       	      stocks-data: [{'sector': STOCK_SECTOR, 'stock': STOCK_NAME}]  
+		      miscellaneous: {'cash_allocation': CASH_ALLOCATION, 'stock_allocation': STOCK_ALLOCATION,  
+		      		      'number_of_stocks': NUMBER_OF_STOCKS_HELD}  
