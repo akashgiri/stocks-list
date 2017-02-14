@@ -22,16 +22,16 @@ Franklin India Prima Plus Fund is http://www.morningstar.in/mutualfunds/f0gbr06s
 INSTALLATION
 ------------
  LINUX
- * Install python
+ * Install python  
      sudo apt-get install python
 
- * Install pip
+ * Install pip  
      sudo apt-get install python-pip
 
- * Install requests module
+ * Install requests module  
      sudo pip install requests
 
- * Install BeautifulSoup module
+ * Install BeautifulSoup module  
      sudo pip install beautifulsoup4
 
 
@@ -39,7 +39,7 @@ EXECUTION
 ------------
  LINUX
 
- From the root directory of codebase, after setting the URL values in input.json, run:
+ From the root directory of codebase, after setting the URL values in input.json, run:  
 
  python getStocksList.py
 
@@ -51,7 +51,7 @@ and value is an object with list of stocks held by the fund as present in mornin
 e.g.
 For fund "Franklin India Prima Plus Fund", URL should be provided as "http://www.morningstar.in/mutualfunds/f0gbr06si1/franklin-india-prima-plus-fund-growth/detailed-portfolio.aspx".
 
-In the output, key: franklin-india-prima-plus-fund-growth
+In the output, key: franklin-india-prima-plus-fund-growth  
        	       value: an object with following attributes  
 	       	      stocks-data: [{'sector': STOCK_SECTOR, 'stock': STOCK_NAME}]  
 		      miscellaneous: {'cash_allocation': CASH_ALLOCATION, 'stock_allocation': STOCK_ALLOCATION,  
