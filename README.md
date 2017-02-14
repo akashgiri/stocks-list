@@ -10,7 +10,7 @@ REQUIREMENTS
 This scipt requires the following:
 
  * python 
- * python requests, json, re, BeautifulSoup modules
+ * python requests, BeautifulSoup modules
 
 
 INPUT PARAMETERS
