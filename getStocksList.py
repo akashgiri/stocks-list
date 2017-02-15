@@ -23,12 +23,12 @@ except Exception, e:
 ## Object to store the stocks list
 ## key: fund name
 ## value: stocks list
-detailedPortfolio = {}
+detailed_portfolio = {}
 keys = []
 
 ## Function to add some additional data to output
 ## currently adding asset allocation, i.e. cash, stock and number of stocks held
-def add_additional_data(soup, count, key, detailedPortfolio):
+def add_additional_data(soup, count, key, detailed_portfolio):
     stock_allocation = 0
     cash_allocation = 0
 
@@ -50,16 +50,16 @@ def add_additional_data(soup, count, key, detailedPortfolio):
     misc_data["number_of_stocks"] = (misc_data.get("number_of_stocks", 0)
                                     + count)
 
-    detailedPortfolio[key]["miscellaneous"] = misc_data
+    detailed_portfolio[key]["miscellaneous"] = misc_data
 
-    return detailedPortfolio
+    return detailed_portfolio
 
 for url in urls:
     print url
     key = url.rpartition('/')[0].rpartition('/')[2]
     keys.append(key)
-    detailedPortfolio.setdefault(key, {})
-    detailedPortfolio[key].setdefault("stocks-data", [])
+    detailed_portfolio.setdefault(key, {})
+    detailed_portfolio[key].setdefault("stocks-data", [])
     
     ## Fetch detailed portfolio data
     response = requests.get(url)
@@ -85,15 +85,15 @@ for url in urls:
         try:
             current["stock"] = stock_td.string
             current["sector"] = sector_td.string
-            detailedPortfolio[key]["stocks-data"].append(current)
+            detailed_portfolio[key]["stocks-data"].append(current)
             count += 1
         except:
             pass
 
-    add_additional_data(soup, count, key, detailedPortfolio)
+    add_additional_data(soup, count, key, detailed_portfolio)
 
 outfile = open('stocks-list.json', 'w')
-json.dump(detailedPortfolio, outfile)
+json.dump(detailed_portfolio, outfile)
 outfile.close()
 
 exit()
