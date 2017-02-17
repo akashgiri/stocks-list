@@ -84,7 +84,12 @@ for url in urls:
         current = {}
 
         try:
-            current["stock"] = stock_td.string
+            stock_name = stock_td.string
+            stock_name = stock_name.replace(' Corp ', ' Corporation ')
+            stock_name = stock_name.replace("Ltd", "Ltd.")
+            stock_name = stock_name.replace(" Limited", " Ltd.")
+            stock_name = stock_name.replace(" Co ", " Company ")
+            current["stock"] = stock_name
             current["sector"] = sector_td.string
             current["weighting"] = weighting_td.string
             detailed_portfolio[key]["stocks-data"].append(current)
@@ -98,4 +103,4 @@ outfile = open('stocks-list.json', 'w')
 json.dump(detailed_portfolio, outfile)
 outfile.close()
 
-exit()
+exit()    

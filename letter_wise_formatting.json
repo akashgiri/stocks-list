@@ -296,7 +296,7 @@
     "Crown Lifters Ltd.": "CROWNSM",
     "C Mahendra Exports Ltd.": "CMAHENDRABZ",
     "Crisil Ltd.": "CRISIL",
-    "Credit Analysis & Research Ltd.": "CARERATING",
+    "Credit Analysis and Research Ltd.": "CARERATING",
     "Cigniti Technologies Ltd.": "CIGNITITEC",
     "Castrol India Ltd.": "CASTROLIND",
     "Chettinad Cement Corporation Ltd.": "CHETTINAD",
@@ -308,7 +308,7 @@
     "CORE Education & Technologies Ltd.": "COREEDUTECBZ",
     "Creative Eye Ltd.": "CREATIVEYE",
     "Cineline India Ltd.": "CINELINE",
-    "Commercial Engineers & Body Builders Co Ltd.": "CEBBCO",
+    "Commercial Engineers & Body Builders Company Ltd.": "CEBBCO",
     "Chowgule Steamships Ltd.": "CHOWGULSTMBE",
     "Cimmco Ltd.": "CIMMCO",
     "Caprihans India Ltd.": "CAPRIHANS",
@@ -734,7 +734,6 @@
     "Granules India Ltd.": "GRANULES"
   },
   "F": {
-    "Federal Bank Ltd.": "FEDERALBNK",
     "FCS Software Solutions Ltd.": "FCSSOFTBE",
     "Firstsource Solutions Ltd.": "FSL",
     "FCL Technologies & Products Ltd.": "FLEXCHEM",
@@ -892,7 +891,7 @@
     "India Steel Works Ltd.": "ISIBARS",
     "Indian Hume Pipe Company Ltd.": "INDIANHUME",
     "India Nippon Electricals Ltd.": "INDNIPPON",
-    "Indian Hotels Co Ltd": "INDHOTEL"
+    "Indian Hotels Company Ltd": "INDHOTEL"
   },
   "H": {
     "Himachal Futuristic Communications Ltd.": "HFCL",
@@ -1639,7 +1638,7 @@
     "Ponni Sugars (Erode) Ltd.": "PONNIERODE",
     "Pansari Developers Ltd.": "PANSARISM",
     "Prabhat Dairy Ltd.": "PRABHAT",
-    "Procter & Gamble Hygiene & Healthcare Ltd.": "PGHH",
+    "Procter & Gamble Hygiene and Health Care Ltd.": "PGHH",
     "Prakash Industries Ltd.": "PRAKASH",
     "Padmalaya Telefilms Ltd.": "PADMALAYATBE",
     "PTC India Financial Services Ltd.": "PFS",
@@ -1659,6 +1658,7 @@
     "Polaris Consulting & Services Ltd.": "POLARIS"
   },
   "S": {
+    "Swaraj Engines Ltd.": "SWARAJENG",
     "State bank of India": "SBIN",
     "Sakar Healthcare Ltd.": "SAKARSM",
     "SPEL Semiconductor Ltd.": "SPICELEC",
@@ -1859,7 +1859,11 @@
     "Sangam (India) Ltd.": "SANGAMIND",
     "SKF India Ltd.": "SKFINDIA",
     "Sastasundar Ventures Ltd.": "SASTASUNDR",
-    "Shyam Century Ferrous Ltd.": "SHYAMCENT"
+    "Shyam Century Ferrous Ltd.": "SHYAMCENT",
+    "Sun Pharmaceutical Industries Ltd.": "SUNPHARMA",
+    "Strides Shasun Ltd.": "STAR",
+    "Sundaram Finance Ltd.": "SUNDARMFIN",
+    "Symphony Ltd.": "SYMPHONY"
   },
   "R": {
     "Radaan Mediaworks (I) Ltd.": "RADAAN",
@@ -1964,7 +1968,8 @@
     "Recron Synthetics Ltd.": "RAYMONDSYNBE",
     "Ramco Industries Ltd.": "RAMCOIND",
     "RPG Life Sciences Ltd.": "RPGLIFE",
-    "Rossell India Ltd.": "ROSSELLINDBE"
+    "Rossell India Ltd.": "ROSSELLINDBE",
+    "Ramco Cements Ltd": "RAMCOCEM"
   },
   "U": {
     "Ugar Sugar Works Ltd.": "UGARSUGAR",
@@ -2010,6 +2015,7 @@
     "UltraTech Cement Ltd.": "ULTRACEMCO"
   },
   "T": {
+    "The Federal Bank Ltd.": "FEDERALBNK",
     "Thangamayil Jewellery Ltd.": "THANGAMAYL",
     "Transchem Ltd.": "TRANSCHEM",
     "TRF Ltd.": "TRF",
@@ -2254,7 +2260,7 @@
   },
   "Y": {
     "Yogi Healthcare Ltd.": "COREPARENTBE",
-    "YES Bank Ltd.": "YESBANK",
+    "Yes Bank Ltd.": "YESBANK",
     "Yuken India Ltd.": "YUKENINDIABE",
     "Yokogawa India Ltd": "YOKOGAWA"
   },
