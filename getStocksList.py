@@ -80,11 +80,13 @@ for url in urls:
         if not stock_td:
             stock_td = td.previous_sibling.previous_sibling.span            
         sector_td = td.next_sibling.next_sibling
+        weighting_td = sector_td.next_sibling.next_sibling.next_sibling.next_sibling
         current = {}
 
         try:
             current["stock"] = stock_td.string
             current["sector"] = sector_td.string
+            current["weighting"] = weighting_td.string
             detailed_portfolio[key]["stocks-data"].append(current)
             count += 1
         except:
