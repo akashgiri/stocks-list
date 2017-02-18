@@ -17,13 +17,14 @@ def get_percent_change_in_price(content):
 
     return percent_change
     
-def get_stock_price_data(url, code):
+def get_stock_price_data(url, name, code):
     response = requests.get(url)
 
     print response.status_code
     
     if (response.status_code != 200) or (response.content == ""):
-        print "No content received. Exiting!", code
+        print "No content received. Exiting!"
+        print "name : %s :: code : %s" % (name, code)
         return 0.0
 
     content = response.content
@@ -51,17 +52,23 @@ def nav_change_analysis(*args):
 
     total = 0
     total_w = 0
+    cash = 0
     for key in content.keys():
+        total_change = 0
+        total = 0
+        cash = 0
         for current in content[key]:
-            weighting = current[1]
+            # get cash allocation
+            cash = current[1]
+            weighting = current[3]
             weighting = float(weighting)
             total_w += weighting
-            change = current[2]
+            change = current[4]
             change = float(change)
             total += (weighting * change)
             
         #print content
-        total_change = str(total/100)
+        total_change = str((total / 100) + (cash / 100))
         print "Expected NAV change for %s :: %s%%" % (key ,total_change)
 
 #nav_change_analysis()

@@ -34,7 +34,11 @@ def get_matched_stocks_list():
 
     for key in mf_stocks.keys():
         all_mf_stocks = mf_stocks[key]["stocks-data"]
+        misc_data = mf_stocks[key]["miscellaneous"]
         print "Total stocks in mf: " + str(len(all_mf_stocks))
+
+        matched_stocks_data.setdefault(key, [])
+
         match_count = 0
         matched_stocks = []
         data_file.write("MATCHED STOCKS\n")
@@ -51,7 +55,7 @@ def get_matched_stocks_list():
                 ## Get the partial ratio from fuzzywuzzy
                 #ratio = fuzz.partial_ratio(stock_name, current_stock)
                 ratio = fuzz.token_sort_ratio(stock_name, current_stock)
-                if ratio > 90:
+                if ratio > 95:
                     '''
                     print "FOUND"
                     print stock_name + " :: " + current_stock
@@ -64,10 +68,11 @@ def get_matched_stocks_list():
                     ## Prepare data for matched stocks
                     ## stock data appended to matched_stocks_data
                     ## in format: [[STOCK_CODE_1, WEIGHTING_1], [STOCK_CODE_2, WEIGHTING_2], ..]
-                    matched_stocks_data.setdefault(key, [])
                     stock_code = listed_stocks[first_letter][current_stock]
                     size = len(matched_stocks_data[key])
                     matched_stocks_data[key].append([])
+                    matched_stocks_data[key][size].append(stock_name)
+                    matched_stocks_data[key][size].append(misc_data["cash_allocation"])
                     matched_stocks_data[key][size].append(stock_code)
                     matched_stocks_data[key][size].append(stock["weighting"])
 
@@ -91,9 +96,10 @@ def append_price_change_data_in_matched_stocks(matched_stocks_data):
     ## Fetch all the price changes for matched stocks with stock codes
     for key in matched_stocks_data.keys():
         for data in matched_stocks_data[key]:
-            code = data[0]
+            name = data[0]
+            code = data[2]
             url = GOOGLE_FINANCE_URL + code
-            change = get_stock_price_data(url, code)
+            change = get_stock_price_data(url, name, code)
             data.append(change)
 
     #print matched_stocks_data
