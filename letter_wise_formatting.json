@@ -1257,7 +1257,7 @@
     "Motilal Oswal Financial Services Ltd.": "MOTILALOFS",
     "Madras Fertilizers Ltd.": "MADRASFERT",
     "Meghmani Organics Ltd.": "MEGH",
-    "Mahindra & Mahindra Financial Services Ltd.": "MandMFIN",
+    "Mahindra & Mahindra Financial Services Ltd.": "M%26MFIN",
     "Maithan Alloys Ltd.": "MAITHANALL",
     "Munjal Showa Ltd.": "MUNJALSHOW",
     "Murli Industries Ltd.": "MURLIINDBZ",
@@ -1288,7 +1288,7 @@
     "Majesco Ltd.": "MAJESCO",
     "Manaksia Coated Metals & Industries Ltd.": "MANAKCOAT",
     "M P Agro Industries Ltd.": "MPAGROFERTBE",
-    "Mahindra & Mahindra Ltd.": "MandM",
+    "Mahindra & Mahindra Ltd.": "M%26M",
     "MPIL Corporation Ltd.": "MATHPLATTBE",
     "Metalman Industries Ltd.": "METALPIPEBE",
     "Mangalam Cement Ltd.": "MANGLMCEM",
@@ -1659,7 +1659,7 @@
   },
   "S": {
     "Swaraj Engines Ltd.": "SWARAJENG",
-    "State bank of India": "SBIN",
+    "State Bank of India": "SBIN",
     "Sakar Healthcare Ltd.": "SAKARSM",
     "SPEL Semiconductor Ltd.": "SPICELEC",
     "SE Investments Ltd.": "SEINV",
@@ -2142,7 +2142,8 @@
     "Technocraft Industries (India) Ltd.": "TIIL",
     "Talwalkars Better Value Fitness Ltd.": "TALWALKARS",
     "Terruzzi Fercalx India Ltd.": "VULCANENGBE",
-    "The Hi-Tech Gears Ltd.": "HITECHGEAR"
+    "The Hi-Tech Gears Ltd.": "HITECHGEAR",
+    "Tata Motors Ltd. Class A": ""
   },
   "W": {
     "Wisec Global Ltd.": "WESTINDSECBE",
