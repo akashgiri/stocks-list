@@ -25,7 +25,7 @@ def get_stock_price_data(url, name, code):
     if (response.status_code != 200) or (response.content == ""):
         print "No content received. Exiting!"
         print "name : %s :: code : %s" % (name, code)
-        return 0.0
+        return [0.0, "0"]
 
     content = response.content
     

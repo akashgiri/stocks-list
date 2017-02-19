@@ -9,9 +9,10 @@ from price_changes import get_stock_price_data
 GOOGLE_FINANCE_URL = "http://finance.google.com/finance/info?client=ig&q=NSE:"
 
 class MutualFundNavAnalysis:
+    matched_stocks_data = {}
     
     def __init__(self):
-        return 
+        MutualFundNavAnalysis.matched_stocks_data = {}
 
     def get_mf_stock_data(self):
         stocks_data = open("stocks-list.json", "r")
@@ -32,18 +33,16 @@ class MutualFundNavAnalysis:
         mf_stocks = self.get_mf_stock_data()
         listed_stocks = self.get_listed_stocks_dict()
         all_mf_stocks = []        
-        weighting_price_change_data = {}
-        matched_stocks_data = {}
         
         ## file to store matched and unmatched stocks data
-        data_file = open("analysis_data.txt", "a")
+        data_file = open("analysis_data.txt", "w")
 
         for key in mf_stocks.keys():
             all_mf_stocks = mf_stocks[key]["stocks-data"]
             misc_data = mf_stocks[key]["miscellaneous"]
             print "Total stocks in mf: " + str(len(all_mf_stocks))
             
-            matched_stocks_data.setdefault(key, [])
+            MutualFundNavAnalysis.matched_stocks_data.setdefault(key, [])
             
             match_count = 0
             matched_stocks = []
@@ -58,10 +57,7 @@ class MutualFundNavAnalysis:
                 ## Branch directly to stocks starting letter
                 ## The data for stocks is segregated based on first letter of stock name
                 for current_stock in listed_stocks[first_letter]:
-                    ## Get the token sort ratio from fuzzywuzzy
-                    ratio = fuzz.token_sort_ratio(stock_name, current_stock)
-
-                    if ratio > 95:
+                    if self.is_fuzzy_matching_valid(stock_name, current_stock):
                         data_file.write(stock_name+" ==> "+current_stock+"\n")
 
                         match_count += 1
@@ -71,19 +67,28 @@ class MutualFundNavAnalysis:
                         ## stock data appended to matched_stocks_data
                         ## in format: [[STOCK_CODE_1, WEIGHTING_1], [STOCK_CODE_2, WEIGHTING_2], ..]
                         stock_code = listed_stocks[first_letter][current_stock]
-                        size = len(matched_stocks_data[key])
-                        matched_stocks_data[key].append([])
-                        matched_stocks_data[key][size].append(stock_name)
-                        matched_stocks_data[key][size].append(misc_data["cash_allocation"])
-                        matched_stocks_data[key][size].append(stock_code)
-                        matched_stocks_data[key][size].append(stock["weighting"])
                         
-        self.dump_matching_analysis(match_count, all_mf_stocks, matched_stocks)
-        self.append_price_change_data_in_matched_stocks(matched_stocks_data)
-        #print matched_stocks_data
+                        append_data = [stock_name, misc_data["cash_allocation"], stock_code, stock["weighting"]]
+                        self.append_matched_data(key, append_data)
+                        
+        self.dump_matching_analysis(data_file, match_count, all_mf_stocks, matched_stocks)
+        self.append_price_change_data_in_matched_stocks()
 
-    def dump_matching_analysis(self, match_count, all_mf_stocks, matched_stocks):
-        data_file = open("analysis_data.txt", "a")
+    def is_fuzzy_matching_valid(self, stock_name, current_stock):
+        ## Get the token sort ratio from fuzzywuzzy
+        ratio = fuzz.token_sort_ratio(stock_name, current_stock)
+        return ratio > 95
+
+    def append_matched_data(self, key, append_data):
+        size = len(MutualFundNavAnalysis.matched_stocks_data[key])
+        MutualFundNavAnalysis.matched_stocks_data[key].append([])
+
+        ## add all data
+        for data in append_data:
+            MutualFundNavAnalysis.matched_stocks_data[key][size].append(data)
+
+    def dump_matching_analysis(self, data_file, match_count, all_mf_stocks, matched_stocks):
+        #data_file = open("analysis_data.txt", "a")
         print "Total matches : " + str(match_count)
         print "Stocks not matched are: \n"
         data_file.write("\n\nNOT MATCHED STOCKS\n")
@@ -93,15 +98,15 @@ class MutualFundNavAnalysis:
             stock = s["stock"]
             if stock not in matched_stocks:
                 print stock
-                data_file.write(stock+"\n")
+                self.data_file.write(stock+"\n")
                 print "\n"
                 
         data_file.close()
         
-    def append_price_change_data_in_matched_stocks(self, matched_stocks_data):
+    def append_price_change_data_in_matched_stocks(self):
         ## Fetch all the price changes for matched stocks with stock codes
-        for key in matched_stocks_data.keys():
-            for data in matched_stocks_data[key]:
+        for key in MutualFundNavAnalysis.matched_stocks_data.keys():
+            for data in MutualFundNavAnalysis.matched_stocks_data[key]:
                 name = data[0]
                 code = data[2]
                 url = GOOGLE_FINANCE_URL + code
@@ -113,23 +118,18 @@ class MutualFundNavAnalysis:
 
         #print matched_stocks_data
         with open("change_data.json", "w") as out:
-            json.dump(matched_stocks_data, out)
+            json.dump(MutualFundNavAnalysis.matched_stocks_data, out)
     
-        return matched_stocks_data
+        #return matched_stocks_data
         
     def nav_change_analysis(self):
-        content = []
         data_file = open("change_data.json", "r")
         content = json.load(data_file)
         print "Read from file!"
             
-        total = 0
-        total_w = 0
-        cash = 0
+        total, total_w, total_change, cash = 0, 0, 0, 0
         for key in content.keys():
-            total_change = 0
-            total = 0
-            cash = 0
+            total, total_w, total_change, cash = 0, 0, 0, 0
             for current in content[key]:
                 # get cash allocation
                 cash = current[1]
@@ -140,9 +140,9 @@ class MutualFundNavAnalysis:
                 change = float(change)
                 total += (weighting * change)
                 
-        #print content
-        total_change = str((total / 100) + (cash / 100))
-        print "Expected NAV change for %s :: %s%%" % (key ,total_change)
+            #print content
+            total_change = str((total / 100) + (cash / 100))
+            print "Expected NAV change for %s :: %s%%" % (key ,total_change)
 
     def get_complete_nav_analysis(self):
         self.get_matched_stocks_list()
