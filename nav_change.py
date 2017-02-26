@@ -141,7 +141,8 @@ class MutualFundNavAnalysis:
                 total += (weighting * change)
                 
             #print content
-            total_change = str((total / 100) + (cash / 100))
+            #total_change = str((total / 100) + (cash / 100))
+            total_change = str(total / 100)
             print "Expected NAV change for %s :: %s%%" % (key ,total_change)
 
     def get_complete_nav_analysis(self):

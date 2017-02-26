@@ -1,14 +1,15 @@
 {
     "urls": [
-	"http://www.morningstar.in/mutualfunds/f0gbr06r6f/sbi-bluechip-fund-regular-growth/detailed-portfolio.aspx"
+	"http://morningstar.in/mutualfunds/f000003zce/kotak-select-focus-growth/detailed-portfolio.aspx",
+	"http://www.morningstar.in/mutualfunds/f0gbr06rxn/kotak-opportunities-fund-growth/detailed-portfolio.aspx"
     ],
     "data": [
 	"http://www.morningstar.in/mutualfunds/f000001a2l/mirae-asset-india-opportunities-fund-regular-growth/detailed-portfolio.aspx",
 	"http://www.morningstar.in/mutualfunds/f0gbr06r2m/quantum-long-term-equity-fund-growth/detailed-portfolio.aspx",
-	"http://www.morningstar.in/mutualfunds/f000001a2l/mirae-asset-india-opportunities-fund-regular-growth/detailed-portfolio.aspx",
 	"http://www.morningstar.in/mutualfunds/f0gbr06s37/icici-prudential-value-discovery-fund-growth/detailed-portfolio.aspx",
 	"http://www.morningstar.in/mutualfunds/f0gbr06si3/franklin-india-smaller-companies-fund-growth/detailed-portfolio.aspx",
 	"http://www.morningstar.in/mutualfunds/f000005ntx/axis-long-term-equity-growth/detailed-portfolio.aspx",
-	"http://www.morningstar.in/mutualfunds/f0gbr06r6f/sbi-bluechip-fund-regular-growth/detailed-portfolio.aspx"
+	"http://www.morningstar.in/mutualfunds/f0gbr06r6f/sbi-bluechip-fund-regular-growth/detailed-portfolio.aspx",
+	"http://www.morningstar.in/mutualfunds/f0gbr06si3/franklin-india-smaller-companies-fund-growth/detailed-portfolio.aspx"
     ]
 }
