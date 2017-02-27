@@ -98,7 +98,7 @@ class MutualFundNavAnalysis:
             stock = s["stock"]
             if stock not in matched_stocks:
                 print stock
-                self.data_file.write(stock+"\n")
+                data_file.write(stock+"\n")
                 print "\n"
                 
         data_file.close()
