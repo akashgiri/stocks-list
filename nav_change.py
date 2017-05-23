@@ -40,7 +40,8 @@ class MutualFundNavAnalysis:
         for key in mf_stocks.keys():
             all_mf_stocks = mf_stocks[key]["stocks-data"]
             misc_data = mf_stocks[key]["miscellaneous"]
-            print "Total stocks in mf: " + str(len(all_mf_stocks))
+
+            print "Total stocks in mf: " + key + " : " + str(len(all_mf_stocks))
             
             MutualFundNavAnalysis.matched_stocks_data.setdefault(key, [])
             
@@ -106,6 +107,7 @@ class MutualFundNavAnalysis:
     def append_price_change_data_in_matched_stocks(self):
         ## Fetch all the price changes for matched stocks with stock codes
         for key in MutualFundNavAnalysis.matched_stocks_data.keys():
+            print "\nPrice changes in MF %s \n" % key
             for data in MutualFundNavAnalysis.matched_stocks_data[key]:
                 name = data[0]
                 code = data[2]
@@ -148,6 +150,6 @@ class MutualFundNavAnalysis:
         self.get_matched_stocks_list()
         self.nav_change_analysis()
             
-
-mf_nav = MutualFundNavAnalysis()
-mf_nav.get_complete_nav_analysis()
+if __name__ == "__main__":
+    mf_nav = MutualFundNavAnalysis()
+    mf_nav.get_complete_nav_analysis()
