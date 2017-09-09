@@ -1,0 +1,10 @@
+beautifulsoup4==4.6.0
+certifi==2017.7.27.1
+chardet==3.0.4
+fuzzywuzzy==0.15.1
+idna==2.6
+lxml==3.8.0
+nsetools==1.0.5
+requests==2.18.4
+six==1.10.0
+urllib3==1.22

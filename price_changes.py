@@ -13,18 +13,18 @@ def get_percent_change_in_price(content):
     try:
         percent_change = content["cp"]
     except Exception as e:
-        print e
+        print(e)
 
     return percent_change
     
 def get_stock_price_data(url, name, code):
     response = requests.get(url)
 
-    print response.status_code
+    print(response.status_code)
     
     if (response.status_code != 200) or (response.content == ""):
-        print "No content received. Exiting!"
-        print "name : %s :: code : %s" % (name, code)
+        print("No content received. Exiting!")
+        print("name : %s :: code : %s" % (name, code))
         return [0.0, "0"]
 
     content = response.content
@@ -32,8 +32,8 @@ def get_stock_price_data(url, name, code):
     content_formatted = json.loads(get_parsed_content(content))
     percent_change = get_percent_change_in_price(content_formatted)
     #print content_formatted
-    print "STOCK :: %s  PRICE PERCENT CHANGE :: %s TIME :: %s" % (content_formatted["t"].ljust(15), str(percent_change).ljust(15), 
-                                                                    content_formatted["lt"].ljust(15))
+    print("STOCK :: %s  PRICE PERCENT CHANGE :: %s TIME :: %s" % (content_formatted["t"].ljust(15), str(percent_change).ljust(15), 
+                                                                    content_formatted["lt"].ljust(15)))
     
     return [percent_change, content_formatted["lt"]]
 
@@ -43,13 +43,13 @@ def get_stock_price_data(url, name, code):
 def nav_change_analysis(*args):
     content = []
     if args:
-        print "arguments are here"
+        print("arguments are here")
         content = args[0]
         #print content
     else:
         data_file = open("change_data.json", "r")
         content = json.load(data_file)
-        print "Read from file!"
+        print("Read from file!")
 
     total = 0
     total_w = 0
@@ -70,6 +70,6 @@ def nav_change_analysis(*args):
             
         #print content
         total_change = str((total / 100) + (cash / 100))
-        print "Expected NAV change for %s :: %s%%" % (key ,total_change)
+        print("Expected NAV change for %s :: %s%%" % (key ,total_change))
 
 #nav_change_analysis()
