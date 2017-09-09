@@ -86,7 +86,8 @@ for url in urls:
         try:
             stock_name = stock_td.string
             stock_name = stock_name.replace(' Corp ', ' Corporation ')
-            stock_name = stock_name.replace("Ltd", "Ltd.")
+            if not re.match(r"(.*?)Ltd(?=.)", stock_name):
+                stock_name = stock_name.replace("Ltd", "Ltd.")
             stock_name = stock_name.replace(" Limited", " Ltd.")
             stock_name = stock_name.replace(" Co ", " Company ")
             current["stock"] = stock_name

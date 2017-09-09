@@ -32,8 +32,8 @@ def get_stock_price_data(url, name, code):
     content_formatted = json.loads(get_parsed_content(content))
     percent_change = get_percent_change_in_price(content_formatted)
     #print content_formatted
-    print "STOCK :: %s,  PRICE PERCENT CHANGE :: %s, TIME :: %s" % (content_formatted["t"], str(percent_change), 
-                                                                    content_formatted["lt"])
+    print "STOCK :: %s  PRICE PERCENT CHANGE :: %s TIME :: %s" % (content_formatted["t"].ljust(15), str(percent_change).ljust(15), 
+                                                                    content_formatted["lt"].ljust(15))
     
     return [percent_change, content_formatted["lt"]]
 
