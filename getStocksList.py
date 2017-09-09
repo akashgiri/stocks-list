@@ -10,14 +10,14 @@ except ImportError:
 
 try:
     inputFile = open("input.json")
-except Exception, e:
-    print e
+except Exception as e:
+    print(e)
     exit()
 
 try:
     urls = json.load(inputFile)['urls']
-except Exception, e:
-    print e
+except Exception as e:
+    print(e)
     exit()
 
 ## Object to store the stocks list
@@ -55,7 +55,7 @@ def add_additional_data(soup, count, key, detailed_portfolio):
     return detailed_portfolio
 
 for url in urls:
-    print url
+    print(url)
     key = url.rpartition('/')[0].rpartition('/')[2]
     keys.append(key)
     detailed_portfolio.setdefault(key, {})
@@ -64,10 +64,10 @@ for url in urls:
     ## Fetch detailed portfolio data
     response = requests.get(url)
 
-    print response.status_code
+    print(response.status_code)
 
     if (response.status_code != 200) or (response.content == ""):
-        print "No content to parse. Please try again!"
+        print("No content to parse. Please try again!")
         exit()
         
     page = response.content
