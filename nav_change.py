@@ -4,6 +4,7 @@ import json
 import re
 from collections import defaultdict
 
+import urllib.parse
 import requests
 from fuzzywuzzy import fuzz
 from price_changes import get_stock_price_data
@@ -33,6 +34,15 @@ class MutualFundNavAnalysis:
         stocks_data.close()
 
         return stocks
+
+    @staticmethod
+    def get_change(current, previous):
+        if current == previous:
+            return 0.0
+        try:
+            return (abs(current - previous)) / previous * 100.0
+        except ZeroDivisionError:
+            return 0.0
 
     def get_matched_stocks_list(self):
         mf_stocks = self.get_mf_stock_data()
@@ -129,6 +139,7 @@ class MutualFundNavAnalysis:
                 code = data[2]
 
                 ## If data already present, use it
+                percent_change = 0.0
                 if code in change_dict:
                     percent_change = change_dict[code]
                 else:
@@ -136,13 +147,20 @@ class MutualFundNavAnalysis:
                     #url = NSE_STOCK_URL
                     #url = url.replace('###', code)
                     #received_data = get_stock_price_data(url, name, code)
-                    received_data = nse.get_quote(code)
-                    percent_change = received_data["pChange"]
-                    
-                    ## preserve the fetched data
-                    change_dict[code] = percent_change
+                    received_data = nse.get_quote(urllib.parse.unquote(code))
+                    #percent_change = self.get_change(received_data["lastPrice"], received_data["previousClose"])
+                    if received_data:
+                        if "pChange" in received_data and received_data["pChange"] is not None:
+                            percent_change = received_data["pChange"]
+                        else:
+                            percent_change = self.get_change(received_data["lastPrice"], received_data["previousClose"])
+                        ## preserve the fetched data
+                        change_dict[code] = percent_change
+                    else:
+                        print("\nNo data receievd\n")
 
                 print(code, percent_change)
+                print("\n")
                 #time = received_data[1]
                 data.append(percent_change)
                 #data.append(time)
