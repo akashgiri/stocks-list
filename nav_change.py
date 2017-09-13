@@ -40,7 +40,7 @@ class MutualFundNavAnalysis:
         if current == previous:
             return 0.0
         try:
-            return (abs(current - previous)) / previous * 100.0
+            return (current - previous) / previous * 100.0
         except ZeroDivisionError:
             return 0.0
 
@@ -143,12 +143,7 @@ class MutualFundNavAnalysis:
                 if code in change_dict:
                     percent_change = change_dict[code]
                 else:
-                    #url = GOOGLE_FINANCE_URL + code
-                    #url = NSE_STOCK_URL
-                    #url = url.replace('###', code)
-                    #received_data = get_stock_price_data(url, name, code)
                     received_data = nse.get_quote(urllib.parse.unquote(code))
-                    #percent_change = self.get_change(received_data["lastPrice"], received_data["previousClose"])
                     if received_data:
                         if "pChange" in received_data and received_data["pChange"] is not None:
                             percent_change = received_data["pChange"]
